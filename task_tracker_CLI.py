@@ -54,22 +54,78 @@ def main():
                 print(f"Task '{task['description']}' has id {task['id']}")
         
     elif command == "mark-done":
-        task_id = int(sys.argv[2])
+        try:    
+            task_id = int(sys.argv[2])
+        except (ValueError, IndexError):
+            print("Please provide a valid numeric task ID to update the status.")
+            return
+        
         for item in tasks:
             if task_id == item['id']:
                 item['status'] = "done"
+                item['updatedAt'] = datetime.now().isoformat()
+                print(f"Status of a task with id {item['id']} has been updated")
                 with open("tasks.json", "w") as f:
                     json.dump(tasks, f, indent=2)
+                    break
+            else:
+                print(f"Task with id {task_id} does not exist.")
+
     elif command == "mark-in-progress":
-        task_id = int(sys.argv[2])
+        try:    
+            task_id = int(sys.argv[2])
+        except (ValueError, IndexError):
+            print("Please provide a valid numeric task ID to update the status.")
+            return
+        
         for item in tasks:
             if task_id == item['id']:
                 item['status'] = "in-progress"
+                item['updatedAt'] = datetime.now().isoformat()
+                print(f"Status of a task with id {item['id']} has been updated")
                 with open("tasks.json", "w") as f:
-                    json.dump(tasks, f, indent=2)                
+                    json.dump(tasks, f, indent=2) 
+                    break
+            else:
+                print(f"Task with id {task_id} does not exist.")
+
+    elif command == "update":
+        try:
+            task_id = int(sys.argv[2])
+        except(ValueError,IndexError):
+            print("Please provide a valid numeric task ID to update.")
+            return
         
+        for item in tasks:
+            if task_id == item['id']:
+                item['description'] = input("Please Enter a new descrpition: ") 
+                item['updatedAt'] = datetime.now().isoformat()  
+                print(f"Task with id {item['id']} has been updated")
+                with open("tasks.json", "w") as f:
+                    json.dump(tasks, f, indent=2) 
+                    break
+            else:
+                print(f"Task with id {task_id} does not exist.")
+                    
     
-           
+    elif command == "delete":
+        try:
+            task_id = int(sys.argv[2])
+        except (ValueError,IndexError):
+            print("Please provide a valid numeric task ID to delete.")
+            return
+         
+        for item in tasks:
+            if task_id == item['id']:
+                tasks.remove(item) 
+                print(f"Task with id {item['id']} has been deleted")
+                with open("tasks.json", "w") as f:
+                    json.dump(tasks, f, indent=2)
+                    break
+            else:
+                print(f"Task with id {task_id} does not exist.")
+                 
 if __name__ == "__main__":
     main()
+    
 

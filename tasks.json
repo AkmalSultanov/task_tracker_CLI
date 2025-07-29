@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "description": "Walk my dog",
-    "status": "done",
+    "description": "Listen to music",
+    "status": "in-progress",
     "createdAt": "2025-07-26T16:19:45.508313",
-    "updatedAt": "2025-07-26T16:19:45.508313"
+    "updatedAt": "2025-07-29T17:43:33.276106"
   },
   {
     "id": 2,
     "description": "Walk my fish",
-    "status": "in-progress",
+    "status": "done",
     "createdAt": "2025-07-27T15:57:33.550596",
     "updatedAt": "2025-07-27T15:57:33.550596"
   },
@@ -22,9 +22,9 @@
   },
   {
     "id": 4,
-    "description": "Go Fishing",
-    "status": "in-progress",
-    "createdAt": "2025-07-28T17:25:19.135766",
-    "updatedAt": "2025-07-28T17:25:19.135766"
+    "description": "Add a delete command",
+    "status": "done",
+    "createdAt": "2025-07-29T17:07:53.417600",
+    "updatedAt": "2025-07-29T17:07:53.417600"
   }
 ]
